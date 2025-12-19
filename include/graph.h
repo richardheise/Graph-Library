@@ -5,92 +5,92 @@
 
 //------------------------------------------------------------------------------
 
-typedef Agraph_t *grafo;
-typedef Agnode_t *vertice;
+typedef Agraph_t *graph;
+typedef Agnode_t *vertex;
 
 // -----------------------------------------------------------------------------
 // devolve o grafo lido da entrada padrão (formato dot)
 
-grafo le_grafo(void);
+graph read_graph(void);
 
 // -----------------------------------------------------------------------------
 // desaloca g
 
-void destroi_grafo(grafo g);
+void destroy_graph(graph g);
 
 // -----------------------------------------------------------------------------
 // escreve g na saída padrão em formato dot
 // devolve g
 
-grafo escreve_grafo(grafo g);
+graph write_graph(graph g);
 
 // -----------------------------------------------------------------------------
 // devolve o número de vértices de g
 
-int n_vertices(grafo g);
+int count_vertices(graph g);
 
 
 // -----------------------------------------------------------------------------
 // devolve o número de arestas do grafo
 
-int n_arestas(grafo g);
+int count_edges(graph g);
 
 
 // -----------------------------------------------------------------------------
 // devolve o grau do vértice v em g
 
-int grau(vertice v, grafo g);
+int degree(vertex v, graph g);
 
 // -----------------------------------------------------------------------------
 // devolve o grau máximo de g
 
-int grau_maximo(grafo g);
+int max_degree(graph g);
 
 // -----------------------------------------------------------------------------
 // devolve o grau mínimo de g
 
-int grau_minimo(grafo g);
+int min_degree(graph g);
 
 // -----------------------------------------------------------------------------
 // devolve o grau médio de g
 
-int grau_medio(grafo g);
+int avg_degree(graph g);
 
 //------------------------------------------------------------------------------
 // devolve 1 se g é regular, ou 0 caso contrário
 
-int regular(grafo g);
+int is_regular(graph g);
 
 //------------------------------------------------------------------------------
 // devolve 1 se g é completo, ou 0 caso contrário
 
-int completo(grafo g);
+int is_complete(graph g);
 
 //------------------------------------------------------------------------------
 // devolve 1 se g é conexo, ou 0 caso contrário
 
-int conexo(grafo g);
+int is_connected(graph g);
 
 //------------------------------------------------------------------------------
 // devolve 1 se g é bipartido, ou 0 caso contrário
 
-int bipartido(grafo g);
+int is_bipartite(graph g);
 
 //------------------------------------------------------------------------------
 // devolve o número de triângulos (subgrafos completos de 3 vértices) em g
 
-int n_triangulos(grafo g);
+int count_triangles(graph g);
 
 //------------------------------------------------------------------------------
 // devolve uma matriz de adjacência de g onde as linhas/colunas
 // estão ordenadas do mesmo modo que agfstnode() e agnxtnode()
 // em libcgraph
 
-int **matriz_adjacencia(grafo g);
+int **adjacency_matrix(graph g);
 
 //------------------------------------------------------------------------------
 // devolve o grafo complementar a g
 
-grafo complemento(grafo g);
+graph complement(graph g);
 
 #endif

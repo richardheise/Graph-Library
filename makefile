@@ -35,15 +35,24 @@ CFLAGS  = -std=c99 \
 	  -Wvolatile-register-var \
 	  -Wwrite-strings
 
+INCLUDES = -I./include
+
 #------------------------------------------------------------------------------
 .PHONY : all clean
 
 #------------------------------------------------------------------------------
-all : teste
+all : test
 
-teste : teste.o grafo.o
+test : src/test.o src/graph.o
 	$(CC) $(CFLAGS) -o $@ $^ -lcgraph
+
+src/test.o: src/test.c include/graph.h
+	$(CC) $(CFLAGS) $(INCLUDES) -c src/test.c -o src/test.o
+
+src/graph.o: src/graph.c include/graph.h
+	$(CC) $(CFLAGS) $(INCLUDES) -c src/graph.c -o src/graph.o
+
 
 #------------------------------------------------------------------------------
 clean :
-	$(RM) teste *.o
+	$(RM) test src/*.o
